@@ -1,6 +1,6 @@
 # List and select links from eMule collection
 
-It's [emulecollector.py](miscellanea/emulecollector.py).
+It's [emulecollector.py](emulecollector.py).
 
 The tool `ed2k` can do what you need, but many users need GUIs. Here
 comes this Python script: it uses Gtk to **list** the collection's
