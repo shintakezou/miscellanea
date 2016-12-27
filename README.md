@@ -12,8 +12,8 @@ not apply if specified otherwise.
 Sometimes you can find not necessarily brief, but likely mindless and
 hopefully useful explanations in other files.
 
-- [List and select eMule collection GUI](emulecollector/README.md)
-- [About MIDI](midi/README.md)
+- [List and select eMule collection GUI](emulecollector/)
+- [About MIDI](midi/)
 
 
 
