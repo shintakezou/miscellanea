@@ -1,8 +1,9 @@
 #! /usr/bin/perl
 
+# italian version
+
 use strict;
 use Date::Simple ('date', 'leap_year');
-use Date::Format;
 
 my @giorni = ('Dom', 
               'Lun', 
@@ -49,11 +50,10 @@ my $nday = 1;
 my $nmonth = 1;
 my $nweekday = 0;
 
+# ===========================
 my $d = date('2016-01-01');
+# ===========================
 
-#print $giorni[$d->day_of_week] . "\n";
-#print $mesi[$d->month] . "\n";
-#print leap_year($d->year) ? "yes\n" : "no\n";
 
 my $isleap = leap_year($d->year);
 my $destday = $isleap ? 366 : 365;
