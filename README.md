@@ -9,11 +9,12 @@ everyone. They are anything but meant to be user-friendly.
 See also [the license](LICENSE) for the original stuff. It does
 not apply if specified otherwise.
 
-Sometimes you can find not necessarily brief, but likely mindless and
-hopefully useful explanations in other files.
+If they exist, read also the READMEs in the subdirectories you are
+interested in.
 
 - [List and select eMule collection GUI](emulecollector/)
 - [About MIDI](midi/)
+- [GNU Smalltalk stuffs](gnusmalltalk/)
 
 
 
