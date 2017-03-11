@@ -310,7 +310,6 @@ sub emit_stroke
 {
     my $argom = shift(@_);
     my $from;
-    my $codetest;
     my $squishval = $squash;
 
 
@@ -319,10 +318,8 @@ sub emit_stroke
     if ( $argom < 0 )
     {
 	$from = 5;
-	$codetest = '$i >= 0';
     } else {
 	$from = 0;
-	$codetest = '$i <= 5';
     }
 
     my $calcd = 4*$resol*$durdiv/$dur;
@@ -337,7 +334,7 @@ sub emit_stroke
 
     $status = 0;
     my $i = $from;
-    while ( $argom < 0 ? ($i >= 0) : $i <= 5)
+    while ( $argom < 0 ? ($i >= 0) : ($i <= 5))
     {
 	if ( $playing[$i] =~ /x/ ) 
 	{
