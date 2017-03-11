@@ -15,6 +15,7 @@ interested in.
 - [List and select eMule collection GUI](emulecollector/)
 - [About MIDI](midi/)
 - [GNU Smalltalk stuffs](gnusmalltalk/)
+- [Guitar MIDI](guitarmidi/)
 
 
 

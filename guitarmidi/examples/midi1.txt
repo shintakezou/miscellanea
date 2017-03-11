@@ -1,0 +1,8 @@
+t=90 ts=3,2 q4
+x43121 =C vv v
+q8 431114 =G v ^
+q4 +C vv v
+q8 244322 =F v ^
+q4 +C vv v
++G ^
+q2 +C vv

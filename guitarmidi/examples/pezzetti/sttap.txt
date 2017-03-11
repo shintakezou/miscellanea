@@ -1,0 +1,136 @@
+# Title: Se ti tagliassero a pezzetti
+# Author: Fabrizio De Andre`
+# Editing: Mauro Panigada for gmidi.pl
+
+t=130 ts=4,2
+022100 =E
+242222 =F#m7
+x24422 =Badd2
+577600 =Aadd2
+799800 =Bsus4
+x46454 =C#m7
+
+q8
+# INTRO
+   +E     vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+# se ti tagliassero a pezzeti il vento li_
+          vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+# _i raccogliereb_
+   +F#m7  vv ^ v q4 ^^ q8 v ^ v
+# _be, il regno dei ragni cucirebbe la pel_
+   +E     vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+# _le
+   +F#m7  vv ^ v q4 ^^ q8 v ^ v
+# ... e la
+   +Badd2 vv ^ v q4 ^^ q8 v ^ v
+# luna, la luna tesserebbe i capelli e il vi_
+   +E     vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+# _so
+   +F#m7  vv ^ v q4 ^^ q8 v ^ v
+# e_il
+   +Aadd2 vv ^ v q4 ^^ q8 v ^ v
+# polline di
+   +E     vv ^ v q4 ^^ q8 v ^ v
+# Dio, di Dio il sorri_
+   +Bsus4 vv ^ v q4 ^^ q8 v ^ v
+# _so
+   +Aadd2 vv ^ v q4 ^^ q8 ^ t=14 q4 v
+# ti ho tro_vata lungo il fiume, che suo_
+t=130 q8
+   +E     vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+# _navi una foglia di fio_
+   +F#m7  vv ^ v q4 ^^ q8 v ^ v
+# _re; che cantavi parole leggere, parole d'amo_
+   +E     vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+# _re
+   +F#m7  vv ^ v q4 ^^ q8 v ^ v
+# ho assag_
+   +Badd2 vv ^ v q4 ^^ q8 v ^ v
+# _giato le tue
+   +Aadd2 vv ^ v q4 ^^ q8 v ^ v
+# labbra, di
+   +Bsus4 vv ^ v q4 ^^ q8 v ^ v
+# miele rosso
+   +C#m7  vv ^ v q4 ^^ q8 v ^ v
+# rosso, ti ho detto
+   +Aadd2 vv ^ v q4 ^^ q8 v ^ v
+# dammi quello che vuoi_
+   +E     vv ^ v q4 ^^ q8 v ^ v
+# _ io quel che
+   +Bsus4 vv ^ v q4 ^^ q8 v ^ v
+# posso. Rosa
+   q2 +Aadd2 vv +F#m7 q4. v q2.. +E v q2 p
+
+#--------------------------------------------------------------
+# gialla, rosa di rame, mai ballato
+    q8    vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+# così a lungo
+   +F#m7  vv ^ v q4 ^^ q8 v ^ v
+# lungo il filo della notte, sulle pietre del gior_
+   +E     vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+# _no
+   +F#m7  vv ^ v q4 ^^ q8 v ^ v
+# io suona_
+   +Badd2 vv ^ v q4 ^^ q8 v ^ v
+# _tore di chitarra, io suonatore di mandoli_
+   +E     vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+# _no
+   +F#m7  vv ^ v q4 ^^ q8 v ^ v
+# al_
+   +Aadd2 vv ^ v q4 ^^ q8 v ^ v
+# _la fine sia_
+   +E     vv ^ v q4 ^^ q8 v ^ v
+# mo caduti sopra il fie_
+   +Bsus4 vv ^ v q4 ^^ q8 v ^ v
+# _no. Persa
+   +Aadd2 vv ^ v q4 ^^ q8 v ^ v
+       q2 vv +F#m7 q4. v q2.. +E v q2
+
+
+# ...per molto persa per poco presa sul serio presa per gioco
+# (etc... il testo va modificato, qui ho fatto solo un copia/incolla)
+
+q8
+# ti ho tro_vata lungo il fiume, che suo_
+   +E     vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+# _navi una foglia di fio_
+   +F#m7  vv ^ v q4 ^^ q8 v ^ v
+# _re; che cantavi parole leggere, parole d'amo_
+   +E     vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+          vv ^ v q4 ^^ q8 v ^ v
+# _re
+   +F#m7  vv ^ v q4 ^^ q8 v ^ v
+# ho assag_
+   +Badd2 vv ^ v q4 ^^ q8 v ^ v
+# _giato le tue
+   +Aadd2 vv ^ v q4 ^^ q8 v ^ v
+# labbra, di
+   +Bsus4 vv ^ v q4 ^^ q8 v ^ v
+# miele rosso
+   +C#m7  vv ^ v q4 ^^ q8 v ^ v
+# rosso, ti ho detto
+   +Aadd2 vv ^ v q4 ^^ q8 v ^ v
+# dammi quello che vuoi_
+   +E     vv ^ v q4 ^^ q8 v ^ v
+# _ io quel che
+   +Bsus4 vv ^ v q4 ^^ q8 v ^ v
+# posso. Rosa
+   q2 +Aadd2 vv +F#m7 q4. v q2.. +E v q2 p
+

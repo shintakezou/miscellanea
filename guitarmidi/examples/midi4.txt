@@ -1,0 +1,6 @@
+t=50
+x32010 =C
+q16 v ^ q8 v q16 v ^
+320003 =G
+q8 v v q16 v ^
++C q8 v v q16 v ^ q8 vvv

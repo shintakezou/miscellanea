@@ -1,0 +1,12 @@
+t=80
+x32010 =C
+x02210 =Am
+320003 =G
+q4
++C  vv v v ^
++Am vv v v ^
++C q2 vv q4 p
++Am vv v v ^
++G vv ^ v ^
++C q1 vv
+
