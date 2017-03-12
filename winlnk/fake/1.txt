@@ -1,0 +1,11 @@
+desc=This is a fake!
+basepath=C:\WINDOWS\system32\notepad.exe
+mainflag=(0x01 << 2) + (0x01 << 4 ) + (0x01 << 7)
+workdir=%HOMEDRIVE%%HOMEPATH%
+time1=0x09ABCDEE#0x4506A400
+time2=1#0
+time3=50606#993939
+volumelabel=HOME
+targetflag=1 + (0x01 << 5)
+length=156000
+

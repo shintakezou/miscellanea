@@ -12,10 +12,12 @@ not apply if specified otherwise.
 If they exist, read also the READMEs in the subdirectories you are
 interested in.
 
+- Uncategorized [assorted tools](assorted_tools/)
 - [List and select eMule collection GUI](emulecollector/)
-- [About MIDI](midi/)
-- [GNU Smalltalk stuffs](gnusmalltalk/)
-- [Guitar MIDI](guitarmidi/)
+- Collection of [GNU Smalltalk stuffs](gnusmalltalk/)
+- [Guitar MIDI](guitarmidi/): get an idea of your strumming chords and
+  rythms (generate a MIDI file type 0 from a text)
+- Informations [about MIDI](midi/)
 
 
 
