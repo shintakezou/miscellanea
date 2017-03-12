@@ -6,8 +6,9 @@ Miscellanea small things, tools and stuffs.
 risk**. No efforts were made to make these things safe for
 everyone. They are anything but meant to be user-friendly.
 
-See also [the license](LICENSE) for the original stuff. It does
-not apply if specified otherwise.
+See also [the license](LICENSE) for the original stuff. It does not
+apply if specified otherwise, e.g. if you find a LICENSE or COPYING
+file inside a descendant directory.
 
 If they exist, read also the READMEs in the subdirectories you are
 interested in.
