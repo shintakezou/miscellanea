@@ -45,7 +45,7 @@ LineFeed, is chopped; if you have a CR LF pair, strip the CR by
 yourself).
 
 Other arguments could be evaluated as Perl expression, so be careful!
-(No sand/safe box created.
+(No sand/safe box created).
 
 * **basepath**: a base path, like `C:\Documents and Settings\User\Desktop`
 * **showwnd**: allowed symbolic values are

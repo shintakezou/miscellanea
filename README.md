@@ -17,7 +17,7 @@ interested in.
 - [List and select eMule collection GUI](emulecollector/)
 - Collection of [GNU Smalltalk stuffs](gnusmalltalk/)
 - [Guitar MIDI](guitarmidi/): get an idea of your strumming chords and
-  rythms (generate a MIDI file type 0 from a text)
+  rhythms (generate a MIDI file type 0 from a text)
 - Informations [about MIDI](midi/)
 
 

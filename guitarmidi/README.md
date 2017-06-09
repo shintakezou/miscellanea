@@ -4,7 +4,7 @@ gmidi.pl
 (Last update of the original text: 2007-03-27. Markdownized,
 typofixed, shortened and slightly modified.)
 
-This is a Perl script that "translate" a text file into a MIDI format
+This is a Perl script that "translates" a text file into a MIDI format
 0 file. (*I had to modify a loop that used an `eval` to make it work
 with my current Perl interpreter version*.)
 
