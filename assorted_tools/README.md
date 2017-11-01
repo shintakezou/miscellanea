@@ -31,3 +31,6 @@ Wikileaks allows to read emails through the web and to show also the
 page, and also attachments or other things which can be extracted by
 [extractmime.py](extractmime.py), once the *raw email* message has
 been saved.
+
+Sometimes it seems like the *raw email* isn't available. Then you will
+get a folder with empy files.
