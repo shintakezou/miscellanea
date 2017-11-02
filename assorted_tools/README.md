@@ -33,4 +33,5 @@ page, and also attachments or other things which can be extracted by
 been saved.
 
 Sometimes it seems like the *raw email* isn't available. Then you will
-get a folder with empy files.
+get a folder with empty files, except for the dump of the data `wget`
+gets.
