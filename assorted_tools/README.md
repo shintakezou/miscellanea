@@ -27,11 +27,15 @@ wlemails.sh
 -----------
 
 Wikileaks allows to read emails through the web and to show also the
-"Raw Email". This tool tries to extract the *raw email* from the web
-page, and also attachments or other things which can be extracted by
-[extractmime.py](extractmime.py), once the *raw email* message has
+"Raw Email" tab. This tool tries to extract the *raw email* from the
+web page, and also attachments or other things which can be extracted
+by [extractmime.py](extractmime.py), once the *raw email* message has
 been saved.
 
 Sometimes it seems like the *raw email* isn't available. Then you will
 get a folder with empty files, except for the dump of the data `wget`
-gets.
+gets. I clean up later with
+
+    find . -type f -size 0 -delete
+
+
