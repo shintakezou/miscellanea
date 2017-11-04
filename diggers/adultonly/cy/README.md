@@ -65,38 +65,39 @@ index is checked for next, i.e. links as `NNNAAAA.htm`. Then this
 
 A sketch of the structure follows
 
-             **index1.html**____
+           **index1.html____
              /         \    \
             /           \    (etc)
            /           index2001.htm
-        **index2000.htm**___
+      **index2000.htm___
         /       \   \   \
        /         \   \  pAAA/(etc)
       /           \  pAAA/001.htm
      pAAA/000.htm  \______ _______________
                     \     \               \
                      \    pBBB/001.htm    p(etc)/(etc)
-                  **pBBB/000.htm**
+                  **pBBB/000.htm
          ________/_____ ________
         /     \        \        \
-     *1.htm*    *2.htm*    ***20.htm***   (etc)
+    *1.htm  *2.htm   ***20.htm   (etc)
                         /  \_____________ next _________
                        /                                \
-                ______/__________________________      *20aba.htm*
+                ______/__________________________      *20aba.htm
                /     \        \         \        \         \
             §00.htm §01.htm  §02.htm  §03.htm    (etc)      \ next
              /        \         \        \                   \
-           XX.jpg    XX.jpg     XX.jpg   XX.jpg            *20abb.htm*
+           XX.jpg    XX.jpg     XX.jpg   XX.jpg            *20abb.htm
            YY.jpg    YY.jpg     ...      ...                  \
-           ZZ.jpg                                           *20abc.htm*
+           ZZ.jpg                                           *20abc.htm
            .                                                   \
            .                                                  (etc)
            .
           (etc)
 
-    Italics is the thumbnails level
+    *Italics is the thumbnails level
     § is the large picture level
-    **Bold** are the links we follow as example
+    **Bold are the links we follow as example
+	***Italics+Bold = thumbnails level and a link we follow
 
 The whole idea is that they have different indexes, one per year. Each
 of these year-index points to several numbered indexes located into
