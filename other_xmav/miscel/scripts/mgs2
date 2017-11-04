@@ -1,0 +1,114 @@
+#!/bin/bash
+# $VER: mgs 1.0 (20051007) GPL; written by beoWuLF
+
+# added 20070308: beoWuLF is noone but me! tak3z0u Musashi or ...
+
+if [ $# -lt 1 ]; then
+ echo "Usage: mgs FILE" 1>&2
+ exit 1
+fi
+ISTR="INIZIO"
+FSTR="FINE"
+if [ $# -ge 2 ]; then
+  ISTR="$2"
+  FSTR="$3"
+fi
+if [ ! -e "$1" ]; then
+ echo "mgs: file '$1' does not exist" 1>&2
+ exit 1
+fi
+cplist=$(cat "$1" |egrep -n "(^>>${ISTR}-|^>>${FSTR}-)" \
+                  |sed "s/>>${ISTR}--* //; s/-*<<\$//" \
+                  |awk '{ b=split($1,a,/:/); print a[1] " " a[2] "\n";}' )
+#echo $cplist
+st=0
+il=0
+fl=0
+pn=""
+esec=`mktemp esec.XXXX`
+for el in `echo $cplist`
+do
+ if [ $el == ">>$FSTR" ] && [ $st -eq 3 ]; then
+   st=0
+   df=$(( $fl - $il - 2))
+   il=$(( $il + 1 ))
+
+   basn=$( basename "$pn" )
+   if [ "$basn" != $pn ]; then
+     dil=$( echo "$pn" |sed -e 's|/| |g' )
+     pd=$( pwd )
+     for dal in `echo "$dil"`
+     do
+       if [ -d "$dal" ]; then
+         cd "$dal"
+       else
+         if [ "$dal" != "$basn" ]; then
+           echo -n "Creating dir tree for for $pn: $dal ..."
+           mkdir "$dal" 2>/dev/null || echo -n "failed!"
+           echo
+           if [ -d "$dal" ]; then
+            cd "$dal"
+           fi
+         fi
+       fi
+     done
+     cd "$pd"
+   fi
+   echo "Prg $basn, starting at line $il, $(($df+1)) lines long, saved into $pn"
+   cat "$1" | sed -n -e "$il,+$df p" > $pn
+   ext=$( echo "$pn" | awk '{ s=split($1,a,/\./); print "." a[s] }' )
+   if [ "$ext" == ".c" ]; then
+     bn=$( echo "$pn" | sed -e 's/\.c$//' )
+     ccl=$( cat "$pn" | grep "^/\*gcc" )
+     noc=$( cat "$pn" | grep -c "^/\*nocc" )
+     esen=$( cat "$pn"| grep -c "^/\*exec")
+     if [ $esen -ne 0 ];then
+        ese=$(cat "$pn"|grep "^/\*exec"|sed -e 's|^/\*exec||; s|\*/||' |
+              sed -e 's/ /\$\$/g')
+        for esl in $ese
+        do
+          todo=$(echo "$esl" |sed -e 's/\$\$/ /g')
+          ./$todo
+        done
+     fi
+     if [ "$ccl" == "" ] && [ $noc -eq 0 ]; then
+       echo "Appending compiling of: $pn in $bn"
+       echo "gcc $pn -o $bn >/dev/null" >>$esec
+     else
+       ccl=$( echo "$ccl" | sed -e 's|^/\*||; s|\*/$||' )
+       echo "$ccl" >>$esec
+     fi
+     continue
+   fi
+   if [ `cat "$pn" | grep -c "^#!"` -eq 1 ]; then
+     chmod +x $pn
+   fi
+   continue
+ fi
+ if [ $st -eq 0 ]; then
+   il=$el
+   st=1
+   continue
+ fi
+ if [ $st -eq 1 ]; then
+   if [ $el == ">>$ISTR" ]; then
+     st=2
+     pn=`mktemp example.XXX`
+     continue
+   fi
+   pn=$el
+   st=2
+   continue
+ fi
+ if [ $st -eq 2 ]; then
+   fl=$el
+   st=3
+   continue
+ fi
+done
+echo "Executing appended compiling list... "
+chmod +x $esec
+./$esec
+rm $esec >/dev/null 2>/dev/null
+echo "Done."
+exit 0

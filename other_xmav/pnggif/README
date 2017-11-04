@@ -1,0 +1,45 @@
+Few times ago someone sent me a Microsoft PowerPoint file. Unluckly I have
+uninstalled OpenOffice from my GNU/Linux partition since I rarely used it
+and I needed room. Anyway I took a look inside the monster (I think the
+D0CF11E Microsoft format is a monster) and found PNG files embedded and text
+(so I've understood what's inside, more or less, i.e. what should appear).
+
+The point is that these PNG were funny, but strange... In the hex dump
+I noticed GIF89 headers too, so... where are these GIFs? Inside the PNGs!!
+Incredible. So a silly thing: an image inside an image, just because
+Microsoft does not know that PNG is static, and MNG is for animation...
+or better: it is not interested in these details.
+
+The PNG chunk name that embeds the ORIGINAL Gif image is msOG. A search
+in Internet gave me a patch for OpenOffice (if I remember well)
+that allows this software to handle Microsoft-poisoned PNG files and show
+the animated GIF instead of the static PNG.
+
+The patch does this: if the msOG chunk exists, load the embedded gif
+(and so ignore the PNG containing the Gif). That's all.
+
+Why such a silly microsofterous stuff? Maybe to avoid studying and
+implementing MNG? It would have been far easier to embed the Gif
+directly, instead of converting to a "poisoned" PNG! The reason behind
+this choice can not be smart (copyright issues about Gif still apply
+since the Gif is embedded! so ...)... could it be "political"? In fact
+non Microsoft softwares that do not understand the msOG chunk will show
+static images, while Microsoft softwares will show the animation, and
+unknowledged users will say Microsoft is better ... ?
+
+Anyway...
+
+FIGHT AGAINST THE msOG CHUNK IN THE PNG FILES!!
+
+The Perl script inside the bin/ folder extracts the Gif from the msOG
+chunk. The usage is simply:
+
+pnggif.pl FILEA.png [FILEB.gif]
+
+If the second argument is not given, the name of the destination file
+will be "FILEA.png.gif", that looks ugly but works fine on every smart
+enough operating system.
+
+Good usage.
+
+tak3z0u 2008/02/25

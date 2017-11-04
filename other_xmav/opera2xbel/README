@@ -1,0 +1,6 @@
+You could need to play with URI::Escape and HTML::Entities,
+since the php XML parser seems to be annoyed by both some special
+unescaped char (and this is ok) and by unknown entities (I don't know
+which entities are defined in XML files... I thought they were the same
+as for HTML, but it seems to be not so)
+

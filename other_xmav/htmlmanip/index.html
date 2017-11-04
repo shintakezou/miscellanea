@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+  <head>
+    <title>Scripts for HTMLs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <style type="text/css">
+body {
+  font-family: serif;
+  font-size: 12pt;
+  text-align: justify;
+  margin-left: 5pc;
+  margin-right: 5pc;
+  background-color: #EFEFEE;
+}
+h1 {
+  background-color: black;
+  color: white;
+  margin-left: -4pc;
+  margin-right: -4pc;
+  text-align: center;
+}
+h2 {
+   margin-top: 5pc;
+   border-bottom: 3pt solid blue;
+}
+pre {
+  border: medium ridge black;
+  padding: 5pt 10pt;
+  background-color: #FFCCAA;
+}
+    </style>
+  </head>
+  <body>
+<h1>Scripts for HTMLs</h1>
+
+<p>All these scripts are old enough but working.</p>
+
+<p>All these scripts are mine.</p>
+
+<p>All these scripts are released under <a href="COPYING">GPL</a>.</p>
+
+<p>See inside sources and read them if you can!</p>
+
+<p>This is a brief usage only doc, don't pretend too much.</p>
+
+
+<h2><a href="scripts/addrscsv.pl">addrscsv.pl</a></h2>
+
+<p>Using pattern matching this program tries to extract <tt>href</tt>
+addresses, so you can use later. It can leave or strip HTML tags with
+the <tt>nohtml</tt> option. You should know a hyperlink in a HTML
+is something like
+<tt>&lt;a href="URL"&gt;TEXT YOU READ&lt;/a&gt;</tt>; the tool here
+print out both URL and TEXT YOU READ (which can contain HTML tags you can
+strip with <tt>nohtml</tt>) using tab to separate them
+(so rather than Comma Separate Values I should have said TSV)</p>
+
+<p>It outputs to standard output and read from standard input, so can
+be used as filter, piped and so on.</p>
+
+<pre>
+addrscsv.pl &lt;file.html &gt;links.tsv
+</pre>
+
+
+<h2><a href="scripts/ghreff.pl">ghreff.pl</a>, <a href="scripts/ghref.pl">ghref.pl</a></h2>
+
+<p>These are basically the same except one accepts a file as argument
+and the other one read from standard in. I wrote these as an aid in scripts
+that access the web automatically, I wrote a lot of them (works fine for
+hot sites e.g. :-), with a great help from <tt>wget</tt> and <tt>curl</tt>.
+Anyway in Bash scripts you could need these!</p>
+
+<p>
+The output it's not too much different from <tt>addrscsv.pl</tt>
+(but this extracts data using pattern matching), but here I use a Perl
+package for HTML parsing. Sometimes it's happened it fails for some
+reason... nothing scaring but keep in mind.
+</p>
+
+<p>These try to cope with fragments of HTML code inside scripts or
+strange situation like those. It goes without saying (!), you can then
+loose some link you could want to keep.</p>
+
+<pre>
+ghreff.pl file.html
+ghref.pl &lt;file.html
+</pre>
+
+<p>Output can be redirected of course in both cases and you can use as
+filters. Take a look at this unuseful example:</p>
+
+<pre>
+ghreff.pl file.html |grep -i "next" |cut -f1
+</pre>
+
+<p>This line extracts links from file <tt>file.html</tt>, then
+selects lines containing the word "next" and finally get just the link
+part. You could use these informations to <tt>curl</tt> the next page...</p>
+
+<p>The work of getting links could be achieved by using <tt>sgrep</tt>
+too I believe, and a little bit of <tt>grep</tt>/<tt>sed</tt>. Just as
+example, I did</p>
+
+<pre>
+sgrep '"&lt;a " .. "&lt;/a&gt;"' bur_csu1.html |sed -e 's/&gt;&lt;/&gt;\x0A&lt;/g'
+</pre>
+
+<p>obtaining interesting results, can you see them? Surely you can do
+something with them, but this is not the main theme of this doc.</p>
+
+
+<h2><a href="scripts/linkall.pl">linkall.pl</a></h2>
+
+<p>This is a rather complex script. First since it is historical in some
+way, I've never fixed lines causing it not to work on O.S. different
+from GNU/Linux (with <q>all</q> GNU tools and maybe something more). If you are
+able to fix all points, fix and use it on you MS Windows system (I wonder
+how your stomach can live with it).</p>
+
+<p>The purpose of this script is simple. You pass to it a directory,
+it explores it looking at all <q>resources</q> (files) it can find,
+and tracks their names. This suggest a first problem: what happens
+if two resources share the same name (into two different dirs of course)?
+Simply only the last one survives.</p>
+
+<p>After this step it analyses all HTML files, using a parsing package
+for Perl, and modifies (or tries to modify...) <i>all</i> links so
+that they link to a named resource.</p>
+
+<p>Let imagine you have downloaded a HTML file as single lonely file,
+because you need only text without make-up.
+The day after you notices a piece of text was indeed an image (it
+happens with mathematical formulae for example)... then you downloaded
+it (say, with <tt>curl</tt>) but now looking off line your page,
+you won't see the image unless you put it where the link is waiting for
+it. <tt>linkall.pl</tt> can fix it for you.</p>
+
+<p>I used it quite often since usually I download pieces of <q>web</q>
+as unrelated, then I see relationship, and use the script. The great
+<tt>wget</tt> can fix when downloading (<tt>-k</tt> option if I remember
+well), but if you downloaded in some other way? E.g. using a Bash
+script that flies through pages following <q>smartly</q> links?</p>
+
+<p><tt>linkall.pl</tt> tries to fix <q>href</q> in <tt>a</tt>,
+<tt>area</tt>, <tt>link</tt> tags; and <q>src</q> in
+<tt>img</tt>. <b>It does not handle in this version objects linking</b>,
+but it is <b>easy</b> to add it if you need.</p>
+
+<pre>
+linkall.pl dir/where/your/materials/are
+</pre>
+
+<p>Let us suppose the tree is:</p>
+
+<pre>
+dir/
+   where/
+      your/
+         materials/
+             are/
+                 file.html
+                 img1/
+                     img1.png
+                     img2.png
+                 img2/
+                     img1.png
+                     img1.png
+</pre>
+
+<p>It happens that <tt>img1/img{1,2}.png</tt> <b>or</b>
+<tt>img2/img{1,2}.png</tt> are lost. They could be mixed too... It depends
+on how Perl read directory's contents... Don't trust too much the
+principle it should read in alphabetical order! It is not so easy!</p>
+
+<p>
+So, before you use this script, be sure there are no resources with
+the same name, because the name it's the only way <tt>linkall.pl</tt>
+can <q>understand</q> which resource should be linked.
+</p>
+
+<p>Last thing: modified URL are highlighted using an ugly yellow
+<i>style</i> so that you can identify them.</p>
+
+
+
+
+<h2><a href="scripts/mvhtml">mvhtml</a></h2>
+
+<p>
+Microsoft Internet Explorer and Firefox when saving web pages so that
+you can see them offline with all images, CSS and so on, creates
+a directory where to put the things (and of course changes the links
+inside the HTML file)
+</p>
+
+<p>Moving this couple file-dir together when doing some scripting
+could be tedious. The script <tt>mvhtml</tt> is born for this. It
+is able to check if a <q>coupled</q> dir exist and move it altogether.
+This Perl script should work on Windows too but I have not tested it.</p>
+
+<p>Since these browsers deal with <q>HTML</q> pages, I used a filter to
+be sure only that kind of files can be treated. You can kill this test
+if you don't need it (nowadays it considers .html .php .asp)</p>
+
+<p>Arguments are all files but the last that is the destination directory,
+where files and coupled dirs will be moved into. Check for duplicates
+is performed.</p>
+
+<pre>
+mvhtml pincopallino.html topolino.php destdir
+</pre>
+
+<p>This example line copies <tt>pincopallino.html</tt> and
+<tt>pincopallino_files</tt>, <tt>topolino.php</tt> and
+<tt>topolino_files</tt> into <tt>destdir</tt>. Of course if
+files or dirs do not exist, nothing can be moved and the program
+skips to the next specified file, if any.</p>
+
+
+
+<h2><a href="scripts/xmht.pl">xmht.pl</a></h2>
+
+
+<p>Another kind of file you can find in your web world is a file
+that <q>embeds</q> several different file in a way specified by some
+RFC somewhere, we shall refer to it as MIME format since this is often
+used to transport several files via e-mails (attachments e.g.).</p>
+
+<p>Opera browser can save a whole web page (with images, CSS, JavaScript
+and so on) into a single file <tt>MHT</tt> (MHTML, MIME HTML) file,
+as can do other browsers too. I believe Konqueror's WAR files are better
+(compressed!), but anyway it happens to have to deal with such files.</p>
+
+<p>Then, <tt>xmht.pl</tt> can extract all the files inside that single
+file, to a destination directory. You can use it for MIME encoded e-mails
+too, don't be fooled by the <tt>xmht.pl</tt> name!</p>
+
+<p>The code of the script does more: create dirs for images, css,
+javascripts, move related resources inside their dirs, and then
+use my own <tt>linkall.pl</tt> to put all together working. These
+operations are performed using <tt>mmv</tt> too that could not be
+on your machine. Simple kill lines after <tt>#rough machilage</tt>
+comment (but keep <tt>exit;</tt>!)</p>
+
+<pre>
+xmht.pl FILE
+xmht.pl FILE DESTDIR
+</pre>
+
+<p>If DESTDIR is not given, current directory is used.</p>
+
+<p>This script can be considered as a wrapper for MIME::Parser Perl
+package, so if something goes wrong don't complain with me.</p>
+
+
+
+  </body>
+</html>

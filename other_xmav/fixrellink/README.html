@@ -1,0 +1,195 @@
+<html>
+  <head>
+    <title>fixrellink.sh</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <style>
+body {
+  width: 800px;
+  text-align: justify;
+  font-family: Arial, sans-serif;
+  font-size: 12pt;
+}
+pre {
+  padding: 5px;
+  border: 1px solid #99a;
+  background-color: #ddd;
+}
+dt {
+    color: green;
+    border-bottom: 1px solid blue;
+}
+dd { margin-bottom: 1pc; }
+h1, h2
+{
+   background-color: #ccf;
+   color: #722;
+}
+    </style>
+  </head>
+  <body>
+<h1>fixrellink.sh</h1>
+
+<h2>What is</h2>
+
+<p>
+The Bash script <tt>fixrellink.sh</tT> is a little bash script (!) that
+has the aim of <q>fixing</q> relative links and making them absolute.
+Relative links need to be fixed when you move the folder containing
+them so that the parent of that folder is not the same as before and
+the links <q>pointed</q> outside the folder they are.
+</p>
+
+
+<h2><a name="why">Why and when to use fixrellink.sh</a></h2>
+
+<p style="border:1px solid #eaa;background-color:#fdf;padding:5px">
+You maybe would feel the need of this script only if you cannot,
+for any reason, use the <tt>mount --bind</tt>!
+<a href="#bind">See here</a> for a fast solution using the --bind option to mount.
+</p>
+
+<p>
+When you copy with the <tt>cp -a</tt> (or with the preserve links option)
+then you obtain a sort of <i>exact</i> copy of the content of the folder.
+The softlinks are not resolved, they are copied as they are. This saves
+rooms but in the same time, if the parent of the folder you are copying
+is not the same, relative links could not work anymore.
+</p>
+
+<p>
+This is why you maybe need <tt>fixrellink.sh</tt>: you <q>moved</q>
+(preserving attributes and links) a folder containing relative softlinks
+and now some of them do not point at the right place since the parent
+of the moved folder is not the same as before.
+</p>
+
+<p>
+<tt>fixrellink.sh</tt> can help you.
+</p>
+
+
+<h2>How</h2>
+
+<p>
+<tt>fixrellink.sh</tt> read softlinks and check if they are not absolute
+and it they point out of the containing folder. If this is true, it makes
+them absolute, using as parent the one you specify.
+</p>
+
+<h2>Usage</h2>
+
+<pre>
+fixrellink.sh FOLDER PARENT ROLLBACKFILE
+</pre>
+
+<pre>
+fixrellink.sh --rollback ROLLBACKFILE
+</pre>
+
+<p>
+These arguments are mandatory.
+</p>
+
+<dl>
+  <dt>FOLDER</dt>
+  <dd>
+     specify the FOLDER where the softlinks are. This is the <b>new</b>
+     folder, but it could be the old one too, before moving/copying
+     it. It works the same. <b>Use absolute path!</b>
+  </dd>
+  <dt>PARENT</dt>
+  <dD>
+     The old parent of the folder, the folder that once contained the
+     moved folder. <b>Use absolute path!</b>
+  </dd>
+  <dt>ROLLBACKFILE</dt>
+  <dd>
+      A file where to save the modified links and their original, so that
+      you can <i>rollback</i> if something seems to go wrong.
+  </dd>
+</dl>
+
+
+<h2>Problems</h2>
+
+<p>
+You could not modify (delete and create) a link if you are not the
+owner of, or if you have no the rights. Attributes like creation time,
+or ownership and so on are not preserved nor restored when you roll
+back. You <b>must</b> run <tt>fixrellink.sh</tt> as the user you want
+to appear as the owner of the link. That owner should have the rights
+to write/delete the links inside that folder.
+</p>
+
+<p>
+Don't forget that your rights to the access of the object pointed
+by the link depends on the rights of the object, not on the rights
+of the link.
+</p>
+
+<p>
+If you are fixing <i>system</i> things (like the case that suggested
+me to create this script) run it as root.
+</p>
+
+<p>
+The script does some checking, but of course I am not responsible
+for any damage, loss of data, ... or anything else.
+</p>
+
+<p>
+<b>Use it at your own risk</b>. Rollback can fix the things back, but
+remember that original creation time and ownership/group of the links
+<b>are not</b> restored. If something relies on that to work properly,
+avoid using <tt>fixrellink.sh</tt>
+</p>
+
+
+<h2>Final note</h2>
+
+<p>
+The use of this script is easy, so no more words are needed. Be sure
+to understand the most important points and the fact that if something
+goes wrong I am not responsible of it. Use it at your own risk.
+</p>
+
+<p>
+(Deleting links is not like deleting real file, so your data should not
+be lost, but if you are not able to fix problems, do not complain with
+me or with <tt>fixrellink.sh</tt>)
+</p>
+
+
+<h2><a name="bind">Why you don't need fixrellink.sh</a></h2>
+
+<p>
+... but anyway it still is an interesting script, isn't it? ...
+</p>
+
+<p>
+The <tt>--bind</tt> option of the mount program kills
+<tt>fixrellink.sh</tt> of course. The solution is so easy... I give
+you the steps taking as example my case.
+</p>
+
+<pre>
+# cp -aR /usr/share /mnt/ext/ext_share
+<span style="white-space:normal;font-family:sans-serif;font-size:x-small;color:#600">check
+everything's fine before to take the next step</span>
+# rm -R /usr/share
+# mkdir /usr/share
+# mount --bind /mnt/ext/ext_share /usr/share
+# echo "/mnt/ext/ext_share /usr/share none rw,bind 0 0" >>/etc/fstab
+</pre>
+
+<p>
+The next time you reboot, you should have your <tt>/usr/share</tt>
+as if it were exactly where it was.
+</p>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,66 @@
+The very short course for C beginners
+=====================================
+
+The C is a language for computer. The first simple example
+is the overmost famousishy Hello World piece.
+
+>>INIZIO------ helloworld.c
+  #include <stdio.h>
+
+  int main()
+  {
+    printf("Hello world\n");
+  }
+>>FINE-----------------------------------------------------------<<
+
+This fine program can be extracted by the mgs2 utility provided, simply
+cd into the dir you want as destination and write
+
+   mgs2 thisfile.txt
+
+then magically all the things would be (maybe) compiled and all embedded
+text extracted to a file.
+
+>>INIZIO--------- estratto.txt
+   For example this text is get by this file and put inside a file
+   named estratto.txt, it is easy and it seems unuseful but it could
+   be very interesting, right or wrongish?
+>>FINE------------------------------------------------------<<
+
+
+Now take a lock at tis:
+
+>>INIZIO------------- code.c
+/*nocc              */
+  #include <stdio.h>
+  #include "donotexist.h"
+
+  int main()
+  {
+     printf("error!\n");
+  }
+>>FINE-----------------------------------------<<
+
+This won't be compiled and it is a luck since it would fail!
+
+That's all, find out yourself into the next stuff how to do a little bit
+more thanks to Moore. Law is stupidity.
+
+>>INIZIO----------- lesson.txt
+  This lesson teaches us two simple fact, that you can add comments
+  to a C file source file I mean so that extractor interprets some
+  commands like *nocc for no compilink, *gcc for compilink, and
+  *exec to execkuting so that all is now linked and completed. Don't
+  you find that Miss Take is a very fine miss? Girls rule because of
+  their counts, without those they will be like men. Someone told this
+  to me, I am not sure I've understood since I know 2 is after 1,
+  and after 2 comes 3 and so on, so, am I a woman?!
+  Well enough kidding for now and on, watch your steps and never forget,
+  I exist, so you exist, and hope you are a fine count and like a
+  beach (never undestood why a easy girl is like a beach; I like sun,
+  however, and that's all about).
+>>FINE--------------------------------------------<<
+
+That's all faults!
+
+

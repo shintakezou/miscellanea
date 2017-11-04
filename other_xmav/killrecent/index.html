@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Kill recents (KDE)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <style>p[alert] {border:2px solid red; padding:10px;margin:1pc 5%;
+background-color:yellow;font-weight:bold;text-align:center}</style>
+  </head>
+  <body>
+<h1>Kill recents (KDE)</h1>
+
+<p>
+It seems like KDE spread recents file almost everywhere... how to kill
+them all? This script's purpose is this, but of course it can fail. Just
+try it.
+</p>
+
+<p alert>
+I am not responsible for any data loss due to right or wrong use or peruse
+or misuse of this script! Watch your step!
+</p>
+
+<p>
+How does it work? It simply looks inside the kind of file KDE can store
+recent information in, and then strip the line(s) containing the recent
+information.
+</p>
+
+<p>
+It does a backup you can of course remove. It looks inside
+<tt>$HOME/.kde/share/config</tt> for files like XXXrc and
+XXX.new ... then it checks inside <tt>kdeglobals</tt> too.
+</p>
+
+  </body>
+</html>

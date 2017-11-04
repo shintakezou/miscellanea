@@ -1,0 +1,157 @@
+<html>
+  <head>
+    <title>Archives: an exploration</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <style>
+body { margin: 0px 10%;
+       text-align: justify;
+}
+h1, h2, h3, h4, h5, h6
+{ border-bottom: 2px solid #888888;
+  border-left: 2px solid #888888;
+  border-top: 2px solid #DDDDDD;
+  border-right: 2px solid #DDDDDD;
+  padding: 4px 1em;
+  text-align: center;
+  margin: 1pc 0px;
+}
+h1 { background-color: #EEFFEE; }
+h2 { background-color: #FFEEFF; }
+pre { border: 1px solid #AAAAFF;
+      background-color: #BBBBFF;
+}
+div[danger] {
+  border: 2px solid red;
+  background-color: yellow;
+  text-align: center;
+  font-size: x-large;
+  padding: 1pc 1em;
+  margin-top: 1pc;
+}
+    </style>
+  </head>
+  <body>
+
+<div danger>
+  I am not responsibile for data losses, corruptions and so on! Use
+  the script at your own risk.
+</div>
+
+
+<h1>Archives: a short exploration</h1>
+
+<p>
+Even though harddisks can contain day by day a huger amount of data,
+cruncher and archives still are important tools to handle large data file
+or collections of files.
+</p>
+
+<p>
+Basically we have at least two kind of archives. One crunchs files
+and then archives them, so that they are still single separate entities
+inside the archive. The other one collects files into the archive and
+then crunchs it as a whole.
+</p>
+
+<p>
+The former has the advantage of making it possible to extract single
+files and look at the content (list), without decrunching the whole
+archive. The latter has the advantage of crunching better, since
+several algorythms can improve their performance treating a greater
+amount of data.
+</p>
+
+<p>
+Archivers like zip, rar, lha, lzx and surely a lot more are of the first
+kind: files can be extracted without decrunching the whole archive.
+The most common archive formats of the latter kind are the .tgz (tar.gz),
+tbz (tar.bz2) and surely others.
+</p>
+
+<p>
+Indeed these formats, very common on *N*X systems, are the combination
+of two different passages: 1) collecting files/dir in a tar file;
+2) crunching the collection with a compressor. This is usually done
+with a single stroke of <tt>tar -czf archive.tar.gz</tt> or
+<tt>tar -cjf archive.tar.bz2</tt>.
+</p>
+
+<p>
+When you find a tar.gz/bz2, the only thing you can do is to decrunch
+it, then you can access its content. Normally this is ok; but sometimes
+we have to cope with huge archive, and the ability of extracting
+single files, as listing the content without having the needed space
+on your harddisk, could be important.
+</p>
+
+<p>
+How can we reach the aim without inventing a new piece of software?
+Simply we can try to swap the passages: before we crunch all files with
+gzip/bz2, then we put it in a tar. This is fine, but then tar is not
+the most suitable choice. Try cpio instead. It is not a case that
+RPM is basically a sort of cpio!
+</p>
+
+<p>
+This is as simple as it seems.
+</p>
+
+<pre>
+find ./ -depth |cpio -ov &gt;the.cpio
+</pre>
+
+<p>
+This is exactly what info file says. Then we extract the archive with
+</p>
+
+<pre>
+cpio -idv &lt;the.cpio
+</pre>
+
+<p>
+Easy. We can list the content (<tt>-t</tt>) and we can add pattern
+to extract single files (see info cpio). What we have to do before
+creating the archive is to crunch files, or they will be in the
+archive uncrunched.
+</p>
+
+<p>
+The given script tries to do all automatically, but it is a proof of
+concept rather than a real and really useful tool.
+</p>
+
+
+
+<h2>Using marc.sh</h2>
+
+<p>
+The use is simply
+</p>
+
+<pre>
+marc.sh ACTION [OPTIONS] ARCHIVE [FILES]
+</pre>
+
+<p>
+ACTION can be list, extract and create. Run it without argument for a
+help. Examples are in <a href="testdir">testdir</a>. There's a tar.gz
+of the same contents too, notice it's length. Of course when you are
+treating not so huge archives, if you don't need to consider the
+archive as a collection of single files, you still would use tar.gz/bz2.
+It is the best choice when it is supposed your archive must be
+unpacked as a whole.
+</p>
+
+<p>
+Anyway for persons like me that always are looking inside things and
+in the meantime have no room on their hd, archivers like zip, rar,
+cpio and so on are someway better...
+</p>
+
+<p>
+Just consider this way for some purposes (as RPMs do).
+</p>
+
+  </body>
+</html>

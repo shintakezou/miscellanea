@@ -1,0 +1,6 @@
+yam2html.pl - converts Amiga YAM mailer address book to HTML
+----------------------------------------------------------------------------
+
+USAGE:
+
+  yam2html.pl <YAM_ADDRESS_BOOK >HTML_OUTPUT.html

@@ -1,0 +1,9 @@
+Just use as:
+
+calendar.sh [YEAR] [FIRST MONTH] [LAST MONTH]
+
+(numeric of course)
+
+Redirect output to get the calendar in a file. The file 2007.html is just
+an example.
+

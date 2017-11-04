@@ -1,0 +1,61 @@
+#!/usr/bin/perl -w
+
+# GPL
+# (C)2006 Mauro Panigada
+
+#
+# It happens IE (Firefox too) can save html files with a related
+# dir (ending in _file) containing images, scripts, CSSes and everything
+# else needed to look the page aa you looked when on line.
+#
+# When writing scripts to administrate contents on your hd, if you
+# ever did this, it's quite annoying to treat these as separate file/dir,
+# since they should be kept together.
+#
+# It was useful to me this script (I wrote it so that it should work
+# on Windows machine too, if you have Perl on it of course!)
+
+# usage:
+#   mvhtml file1 file2 file3 ... fileN dest_dir
+#
+# (on *n*x systems you can use the wildcard expansion writing eg
+#   mvhtml *.html dest_dir
+# )
+#
+# file are recognized by extensions; you can add some more if you need.
+# I did not tested it widely, but it worked on need.
+
+
+use File::Basename;
+use File::Spec;
+
+die "two or more args\n" if ( scalar(@ARGV) < 2 );
+
+my $dest = pop(@ARGV);
+die "destination \"$dest\" is not a dir\n" if ( ! -d "$dest" );
+print "Destination: $dest\n";
+foreach my $files (@ARGV)
+{
+  if ( $files !~ /\.(html?|php|asp)$/i ) {
+     print "Skipping \"$files\": no fine extension\n";
+     next;
+  }
+  # move file by renaming:
+  my $fulldest = File::Spec->catfile($dest,basename($files));
+  if ( -e "$fulldest" ) {
+     print "Skipping \"$files\": same name into \"$dest\"\n";
+     next;
+  }
+  print "Moving \"$files\" to \"$fulldest\"";
+  rename "$files","$fulldest";
+  my $nomine = $files;
+  $nomine =~ s/\.(html?|php|asp)$//i; # killing ext
+  my $dirsa  = $nomine . "_files";
+  if ( -d "$dirsa" ) {
+     $fulldest = File::Spec->catfile($dest,basename($dirsa));
+     next if ( -e "$fulldest" );
+     print " with its _files dir";
+     rename "$dirsa","$fulldest";
+  }
+  print "\n";
+}

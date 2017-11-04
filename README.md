@@ -20,8 +20,9 @@ interested in.
   rhythms (generate a MIDI file type 0 from a text)
 - Informations [about MIDI](midi/)
 - Scripts I wrote to [dig](diggers/) sites (**obsolete**)
-- A way to [update a site](updatesite/) (more likely it makes thing
-  harder than it should be)
-
+- A way to [update a site](updatesite/) (more likely it makes the
+  thing harder than it should be)
+- [Other scripts](other_scripts/) from my site when it was hosted on
+  now-dead Capo Nord
 
 

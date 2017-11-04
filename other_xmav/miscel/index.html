@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+  <head>
+    <title>Miscellanea scripts (manipulation)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <style type="text/css">
+body {
+  font-family: serif;
+  font-size: 12pt;
+  text-align: justify;
+  margin-left: 5pc;
+  margin-right: 5pc;
+  background-color: #EFEFEE;
+}
+h1 {
+  background-color: black;
+  color: white;
+  margin-left: -4pc;
+  margin-right: -4pc;
+  text-align: center;
+}
+h2 {
+   margin-top: 5pc;
+   border-bottom: 3pt solid blue;
+}
+pre {
+  border: medium ridge black;
+  padding: 5pt 10pt;
+  background-color: #FFCCAA;
+}
+    </style>
+  </head>
+  <body>
+<h1>Miscellanea scripts</h1>
+
+<p>All these scripts are old enough but working.</p>
+
+<p>All these scripts are mine.</p>
+
+<p>All these scripts are released under <a href="COPYING">GPL</a>.</p>
+
+<p>See inside sources and read them if you can!</p>
+
+<p>This is a brief usage only doc, don't pretend too much.</p>
+
+
+
+<h2><a href="scripts/asciilist.sh">asciilist.sh</a></h2>
+
+<p>This is a Bash script. It happens (it happened to me) you need
+to write specific <q>ASCII</q> bytes to a file or to a pipe. This script
+does it.</p>
+
+<pre>
+asciilist.sh 0x63 0x69 0x71 0x6f 0x0a
+</pre>
+
+<p>For example writes to output "ciao" (followed by a LineFeed).
+Decimal allowed too.</p>
+
+
+
+<h2><a href="scripts/dothumb.pl">dothumb.pl</a></h2>
+
+<p>A Perl wrapper to <tt>imlib</tt>'s <tt>create_scaled_image</tt>. You
+give a file as first argument (the file must be an image!) and a height
+in pixel. You obtain a scaled image file with a <tt>_th</tt> (thumb) added.</p>
+
+<pre>
+dothumb.pl navastro.png 256
+</pre>
+
+<p>This scales the <tt>navastro.png</tt> image file to a height of 256 pixels.
+Beware of the fact the <tt>imlib</tt> recognises filetype by extension.</p>
+
+
+
+<h2><a href="scripts/mgs2">mgs2</a></h2>
+
+<p>This is a rather complex Bash script. What is its purpose? Why does
+it exist? I can't remember if it was on Phreak or BFI or something like
+that, however <q>there</q> they used to write articles with
+embedded codes (e.g. in C), and provided a program that get those codes...</p>
+
+<p>My <tt>mgs2</tt> is a Bash script that does this: parse file, extracting
+<q>regions</q> of it according to preset identifiers. I can't remember
+details because 1) I wrote it two years ago and 2) I've never used it!
+(But it seems I tested it and it worked...)</p>
+
+<p>It uses all sort of (GNU) tools: sed, egrep, awk, and of course
+common *n*x tools like mkdir, mv, cat and so on... All the shell stuffs...
+It does more: when getting C sources, it can append them for compiling!
+(gcc is used); then, each <q>embedded</q> file has its own path and
+this is created and so on...</p>
+
+<p>A little bit confused? Yes I am too. Why doesn't it use <tt>mkdir -p</tt>?
+Or why...? Well, then specific command per file can be executed, or
+the compilation of C sources can be avoided...</p>
+
+<pre>
+mgs2 FILE
+</pre>
+
+<p>You maybe need an example to test on it and try to understand...
+So I give you an example <a href="scripts/mgs/example.txt">here</a>.
+First create a dir where you want your file, since current dir
+is used and you likely don't want mgs messes it all up (?). Do something
+like (from your preferred shell)</p>
+
+<pre>
+$ mkdir testdir &amp;&amp; cd testdir
+$ path/to/mgs2 path/to/example.txt
+</pre>
+
+<p>Where <tt>$</tt> is the prompt so you know when you have to hit return.
+If everything's fine, you will find 5 files: <tt>helloworld.c</tt> and its
+executable (if compiling was successful), <tt>estratto.txt</tt>, <tt>code.c</tt> and
+<tt>lesson.txt</tt>.</p>
+
+
+<h2><a href="scripts/nocr.pl">nocr.pl</a></h2>
+
+
+<p>It strips CR (Carriage Return) from a file/stream (it uses piping
+so you can use it as a filter).</p>
+
+<pre>
+nocr.pl &lt;file.txt &gt;filenocr.txt
+</pre>
+
+<p>MS DOS and similar systems use the sequence of byte CR LF as
+newline (in decimal the bytes' values are 13 10). Stripping the
+CR gives the *n*x/Amiga convention for newline (just a single LF).
+If you are dealing with Mac files (before of Mac OS X?) the newline
+is the CR alone, so stripping it means creating a single long line.</p>
+
+
+  </body>
+</html>
