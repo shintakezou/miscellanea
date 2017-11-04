@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <title>Kamasutra</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style></style>
+  </head>
+  <body>
+<h1>Kamasutra</h1>
+
+<p>
+Sul sito <a href="http://www.alfemminile.com">Al femminile</a> ho trovato
+questo semplice Kamasutra. Nel caso lo script per il download non lo trovi
+più... mi dispiace, ma non ci posso fare niente... Spero comunque che
+ancora ci sia, e se non c'è quello, ne troverete altri, se proprio
+vi serve un Kamasutra...
+</p>
+
+
+<h2>Fase 1: download</h2>
+
+<p>
+Lo script <tt>kamasutra.sh</tt> scarica il Kamasutra, con tutto quello
+che serve per vederlo offline grazie al programma <tt>wget</tt>.
+</p>
+
+<p>
+Tuttavia, come noterete, c'è parecchio <i>rumore</i>, ovvero a noi
+interessa solo il nome della posizione, l'immagine della posizione
+e il testo della posizione; vogliamo eliminare tutto il resto e ciò viene
+fatto grazie agli altri script.
+</p>
+
+
+<h2>Fase 2: ricreare il manuale</h2>
+
+<p>
+Un primo passo è usare <tt>addhtml.sh</tt> per aggiungere <tt>.html</tt>
+ai nomi dei file (HTML) scaricati.
+</p>
+
+<p>
+Un secondo passo è usare lo script <tt>kamanames.sh</tt> sulla directory
+dove sono stati scaricati i file HTML, in questo modo <q>normalizziamo</q>
+un attimo i nomi, che hanno in pratica un url con argomento, e senza
+il .html finale prima del precedente trattamento. Dovremmo ottenere
+dei file HTML il cui nome sia semplicemente un numero (seguito
+dall'estensione)
+</p>
+
+<p>
+Ora osservate che avete fondamentalmente tre directory: una (diciamo
+la principale) contenente gli HTML or ora "trattati", e altre due (dentro
+un'altra cartella sotto la principale) che
+contengono delle immagini, cioè le immagini delle posizioni e
+le immagini dei nomi delle posizioni (ahimé in immagine invece che
+testo semplice).
+</p>
+
+<p>
+Dalla linea di comando eseguiamo <tt>costruiscimanuale.sh</tt>
+specificando come primo argomento la cartella degli HTML, come
+secondo la cartella dove sono le immagini delle posizioni,
+e come terzo la cartella dove sono le immagini del titolo della
+posizione.
+</p>
+
+<p>
+Alla fine dovreste ottenere una cartella (<tt>kmanuale</tt>) con
+un index.html all'interno che vi permetterà di <i>navigare</i>
+le diverse posizioni e leggervi il loro testo senza tutto il
+<i>rumore</i> del sito originale, tolto grazie allo script
+Perl <tt>estraitest.pl</tt> (che deve trovarsi in una cartella
+presente nel PATH, per esempio in <tt>~/bin</tt> o nella
+cartella corrente).
+</p>
+
+  </body>
+</html>

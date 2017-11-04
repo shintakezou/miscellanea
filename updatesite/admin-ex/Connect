@@ -1,0 +1,12 @@
+# URL of the site
+url="ftp.blabla.net"
+# remote dir e.g. "" too
+rdir="your/remote/dir"
+# base addr: it could be useful
+baseaddr="www.blabla.net"
+# remote addr ... keep it as you see!
+remoteaddr="$baseaddr/$rdir"
+# user name
+usr="username"
+# password
+psw="secretpassword"

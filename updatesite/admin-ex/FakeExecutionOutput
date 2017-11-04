@@ -1,0 +1,14 @@
+open -u username,secretpassword -p 21 ftp://ftp.blabla.net
+lcd /home/xmav/public_html/test
+cd your/remote/dir
+put  index.html
+mput -O adir adir/*.html
+mput -O bdir/cdir bdir/cdir/a[2-9]-*.html
+mput -O adir adir/[0-9].png
+mput -O bdir/cdir bdir/cdir/b*.html
+mrm byebyedir/*
+rmdir byebyedir
+mkdir newdir
+mv olddir newdir/oldie
+mkdir -p kdir/innerdir
+mput -O kdir/innerdir kdir/innerdir/*

@@ -1,0 +1,48 @@
+This is a simple Bash script that allow you to download a list of pages from
+web using wget. The addresses are stored into a file (links.txt); you can
+collect links (like bookmarking) into this file and then run get.sh. As
+result, you will find a dir (destination dir is called "download" but you
+can change it) where "all" pages are locally browseable (with images and all
+needed stuffs)
+
+You can break the process if it gets too much (i.e. if you have too many
+links into links.txt and your download rate is too slow), and the script
+will keep non-downloaded links into the links.txt, while the original
+file will be renamed according to the date.
+
+
+Notes about bot-downloading
+===========================
+
+Some sites don't like this. Scripts that download should be polite, or
+behave like a human. They should not perform requests too fast.
+
+When a "web-agent" accesses the web, it does this with a "name", an
+identity. The http protocol provide a way web-agent "must" declare their
+names. Since there's (theoretically) no reason why we have to masquerade
+ourselves, we leave wget identifying itself like wget.
+
+The wget tool however allows you to change the identification. But
+remember that the request still differ from that of a real browser. A little
+bit more work is needed if you want to "emulate" real browser (not so
+hard, but here we are not interested in)
+
+In order to avoid overloading sites with fast requests, I've put a
+"sleep 1s". This means that between two requests there's one second pause.
+Wget can wait between its requests, and this is done in a random way
+to fool anyone monitoring requests.
+
+This pause indeed can be removed since it's likely links stored into
+links.txt are of different sites. However, the example links.txt
+I give you have two links to http://www.capo-nord.org, so without
+this pause the requets could be too fast.
+
+Interleaving when you can it's a good idea! Then you could remove the
+"sleep" statements (but keep it in Wget options)!
+
+That's all for this simply tool.
+
+M.P.
+
+
+

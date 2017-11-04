@@ -19,7 +19,9 @@ interested in.
 - [Guitar MIDI](guitarmidi/): get an idea of your strumming chords and
   rhythms (generate a MIDI file type 0 from a text)
 - Informations [about MIDI](midi/)
-
+- Scripts I wrote to [dig](diggers/) sites (**obsolete**)
+- A way to [update a site](updatesite/) (more likely it makes thing
+  harder than it should be)
 
 
 

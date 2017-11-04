@@ -1,0 +1,12 @@
+index.html
+adir/*.html
+bdir/cdir/a[2-9]-*.html
+adir/[0-9].png
+bdir/cdir/b*.html
+! mrm byebyedir/*
+! rmdir byebyedir
+! mkdir newdir
+! mv olddir newdir/oldie
+! mkdir -p kdir/innerdir
+kdir/innerdir/*
+
