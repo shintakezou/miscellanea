@@ -40,7 +40,7 @@ this pause the requets could be too fast.
 Interleaving when you can it's a good idea! Then you could remove the
 "sleep" statements (but keep it in Wget options)!
 
-That's all for this simply tool.
+That's all for this simple tool.
 
 M.P.
 
