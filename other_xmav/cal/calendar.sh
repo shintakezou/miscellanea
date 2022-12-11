@@ -5,7 +5,7 @@
 # calendar.sh [YEAR] [FIRST MONTH] [LAST MONTH]
 #
 
-mesi="JAN FEB MAR APR MAY JUN JUL AGO SEP OCT NOV DIC"
+mesi="JAN FEB MAR APR MAY JUN JUL AGO SEP OCT NOV DEC"
 #        31      28     31    30      31     30     31      31    30        31       30       31
 
 if [ "$2" == "" ]; then
