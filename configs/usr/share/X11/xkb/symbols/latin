@@ -45,7 +45,7 @@ xkb_symbols "basic" {
     key <BKSL>	{ [ backslash,        bar,   dead_grave,   dead_breve ]	};
     key <AB01>	{ [         z,          Z, guillemotleft,        less ]	};
     key <AB02>	{ [         x,          X, guillemotright,    greater ]	};
-    key <AB03>	{ [         c,          C,     division,    copyright ]	};
+    key <AB03>	{ [         c,          C,     copyright,    division ]	};
     key <AB04>	{ [         v,          V, leftdoublequotemark, leftsinglequotemark ]	};
     key <AB05>	{ [         b,          B, rightdoublequotemark, rightsinglequotemark ] };
     key <AB06>	{ [         n,          N,            n,            N ]	};
