@@ -1,0 +1,57 @@
+FILTRI DIGITALI
+===============
+
+Filtri FIR
+----------
+
+    INPUT 'K'; K
+    INPUT 'N'; N
+    NN =2*N + 1
+    DIM A(N + 1)
+    DIM AF(N + 1)
+    DIM H(N + 1)
+    DIM C(NN)
+    DIM HH(NN)
+    
+    PI = 3.1415
+    
+    
+       CALCOLO COEFF. SERIE FOURIER
+       
+    A(0) = 1/K; AN = 0
+    FOR I = 1 TO n
+        A(I) = (2 / (I * PI) + SIN(I * PI/K)
+      [ IF ABS(A(I)) > AN THEN AN = ABS(A(I)) ]
+    NEXT
+    
+        CALCOLO COEFF. FINESTRA DI HAMMING
+       
+    FOR I = 1 TO N
+        H(I) = .54 + .46 * COS(2*PI*I/(2*N + 1))
+        
+                    (-?)
+    NEXT
+    
+    H(0) = 1
+    
+        FINESTRATURA COEFFICIENTI
+        
+    AF(0) = A(0)
+    
+    FOR I = 1 TO N
+        AF(I) = A(I) * H(I)
+    NEXT
+    
+    
+    FILTRATURA DIGITALE CON FILTRI FIR:
+    
+    Ogni campione è dato dalla somma del campione e di "N"
+    campioni precedenti moltiplicati per i coefficienti di FIR.
+    Si ottiene passa-basso con la somma, passa-alto con sottrazione
+    
+    I coefficienti necressai possono essere quelli della serie
+    di Fourier. Per minimizzare il ripple, si ricalcolano con
+    la finestratura Hamming.
+    
+    Utilizzando più campioni precedenti, si ottiene un filtro 'COMB'
+        
