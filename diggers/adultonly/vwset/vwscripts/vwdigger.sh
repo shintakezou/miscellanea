@@ -3,9 +3,9 @@
 #
 # downloads:
 #
-# ww3.voyeurweb.com/main/Picturep.html
-# www.privateshots.com/main/Picturep.html
-# voy.voyeurweb.com/main/Pictures.html
+# ***.*********.com/main/Picturep.html
+# ***.************.com/main/Picturep.html
+# ***.*********.com/main/Pictures.html
 #
 # extracts "interesting" links that puts into a list (a file)
 #
@@ -31,7 +31,7 @@ ORIG=`pwd`
 NUMOFLINKS=10
 DOWNFLAG=1
 INPUTFLAG=0
-THEBASE=http://ww3.voyeurweb.com/main
+THEBASE=http://***.*********.com/main
 
 if [ ! -e $STUFFILE ]
 then
@@ -102,13 +102,13 @@ then
   cd $TMP1
 
   echo -n "*"
-  wget -q -k -nd http://ww3.voyeurweb.com/main/Picturep.html --referer http://ww3.voyeurweb.com
+  wget -q -k -nd http://***.*********.com/main/Picturep.html --referer http://***.*********.com
 
   echo -n "*"
-  wget -q -k -nd http://www.privateshots.com/main/Picturep.html --referer http://ww3.voyeurweb.com
+  wget -q -k -nd http://***.************.com/main/Picturep.html --referer http://***.*********.com
 
   echo -n "* "
-  wget -q -k -nd http://voy.voyeurweb.com/main/Pictures.html --referer http://ww3.voyeurweb.com
+  wget -q -k -nd http://***.*********.com/main/Pictures.html --referer http://***.*********.com
   cd $ORIG
   echo "Done."
 

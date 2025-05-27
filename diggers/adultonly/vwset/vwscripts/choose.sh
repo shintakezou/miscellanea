@@ -47,10 +47,10 @@ voy)
   RETYPE="^http://voy."
   ;;
 vw)
-  RETYPE="^http://ww3.voyeurweb"
+  RETYPE="^http://ww3.+++++++++"
   ;;
 ps)
-  RETYPE="^http://www.privateshots"
+  RETYPE="^http://www.++++++++++++"
   ;;
 *)
   echo "Invalid type $DTYPE, supposing 'novoy' instead."
